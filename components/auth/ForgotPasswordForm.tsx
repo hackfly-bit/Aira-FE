@@ -36,17 +36,17 @@ export function ForgotPasswordForm({ onBackToLogin }: ForgotPasswordFormProps) {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <Card className="w-full max-w-md wedding-card animate-fade-in">
+      <div className="min-h-screen flex items-center justify-center p-4 bg-background">
+        <Card className="w-full max-w-md shadow-lg border">
           <CardHeader className="text-center space-y-4">
-            <div className="mx-auto w-16 h-16 bg-linear-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
-              <CheckCircle className="w-8 h-8 text-white" />
+            <div className="mx-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+              <CheckCircle className="w-8 h-8 text-primary-foreground" />
             </div>
             <div>
-              <CardTitle className="text-2xl font-serif text-gray-800">
+              <CardTitle className="text-2xl font-semibold text-foreground">
                 Email Terkirim
               </CardTitle>
-              <CardDescription className="text-gray-600 mt-2">
+              <CardDescription className="text-muted-foreground mt-2">
                 Kami telah mengirim link reset password ke email Anda
               </CardDescription>
             </div>
@@ -54,7 +54,7 @@ export function ForgotPasswordForm({ onBackToLogin }: ForgotPasswordFormProps) {
 
           <CardContent className="space-y-6">
             <div className="text-center space-y-4">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Silakan cek email Anda dan ikuti instruksi untuk mereset password.
                 Jika tidak menerima email dalam 5 menit, cek folder spam.
               </p>
@@ -62,7 +62,7 @@ export function ForgotPasswordForm({ onBackToLogin }: ForgotPasswordFormProps) {
               <Button
                 onClick={onBackToLogin}
                 variant="outline"
-                className="w-full"
+                className="w-full h-10"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Kembali ke Login
@@ -75,17 +75,17 @@ export function ForgotPasswordForm({ onBackToLogin }: ForgotPasswordFormProps) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full max-w-md wedding-card animate-fade-in">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-background">
+      <Card className="w-full max-w-md shadow-lg border">
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-linear-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center">
-            <Mail className="w-8 h-8 text-white" />
+          <div className="mx-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+            <Mail className="w-8 h-8 text-primary-foreground" />
           </div>
           <div>
-            <CardTitle className="text-2xl font-serif text-gray-800">
+            <CardTitle className="text-2xl font-semibold text-foreground">
               Lupa Password
             </CardTitle>
-            <CardDescription className="text-gray-600 mt-2">
+            <CardDescription className="text-muted-foreground mt-2">
               Masukkan email Anda untuk menerima link reset password
             </CardDescription>
           </div>
@@ -95,19 +95,19 @@ export function ForgotPasswordForm({ onBackToLogin }: ForgotPasswordFormProps) {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Email Field */}
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+              <Label htmlFor="email" className="text-sm font-medium text-foreground">
                 Email
               </Label>
               <Input
                 id="email"
                 type="email"
                 placeholder="nama@email.com"
-                className="wedding-input"
+                className="h-10"
                 {...register('email')}
                 disabled={isLoading}
               />
               {errors.email && (
-                <p className="text-sm text-red-500 animate-slide-up">
+                <p className="text-sm text-destructive">
                   {errors.email.message}
                 </p>
               )}
@@ -116,7 +116,7 @@ export function ForgotPasswordForm({ onBackToLogin }: ForgotPasswordFormProps) {
             {/* Submit Button */}
             <Button
               type="submit"
-              className="w-full wedding-button h-11"
+              className="w-full h-11"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -131,10 +131,10 @@ export function ForgotPasswordForm({ onBackToLogin }: ForgotPasswordFormProps) {
           </form>
 
           {/* Back to Login */}
-          <div className="text-center pt-4 border-t border-gray-200">
+          <div className="text-center pt-4 border-t border-border">
             <button
               onClick={onBackToLogin}
-              className="text-sm text-gray-600 hover:text-gray-800 transition-colors inline-flex items-center"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center"
               disabled={isLoading}
             >
               <ArrowLeft className="w-4 h-4 mr-1" />

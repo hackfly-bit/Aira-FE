@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Eye, EyeOff, Heart, Loader2 } from 'lucide-react';
+import { Eye, EyeOff, Shield, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -56,18 +56,18 @@ export function LoginForm({ onForgotPassword }: LoginFormProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <Card className="w-full max-w-md wedding-card animate-fade-in">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-background">
+      <Card className="w-full max-w-md shadow-lg border-border">
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-linear-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center">
-            <Heart className="w-8 h-8 text-white" />
+          <div className="mx-auto w-16 h-16 bg-primary rounded-lg flex items-center justify-center">
+            <Shield className="w-8 h-8 text-primary-foreground" />
           </div>
           <div>
-            <CardTitle className="text-2xl font-serif text-gray-800">
-              Selamat Datang
+            <CardTitle className="text-2xl font-semibold text-foreground">
+              Aira Back Office
             </CardTitle>
-            <CardDescription className="text-gray-600 mt-2">
-              Masuk ke akun Aira Wedding Anda
+            <CardDescription className="text-muted-foreground mt-2">
+              Masuk ke sistem manajemen Aira
             </CardDescription>
           </div>
         </CardHeader>
@@ -76,19 +76,19 @@ export function LoginForm({ onForgotPassword }: LoginFormProps) {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Email Field */}
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+              <Label htmlFor="email" className="text-sm font-medium text-foreground">
                 Email
               </Label>
               <Input
                 id="email"
                 type="email"
                 placeholder="nama@email.com"
-                className="wedding-input"
+                className="h-10"
                 {...register('email')}
                 disabled={isLoading}
               />
               {errors.email && (
-                <p className="text-sm text-red-500 animate-slide-up">
+                <p className="text-sm text-destructive">
                   {errors.email.message}
                 </p>
               )}
@@ -96,7 +96,7 @@ export function LoginForm({ onForgotPassword }: LoginFormProps) {
 
             {/* Password Field */}
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+              <Label htmlFor="password" className="text-sm font-medium text-foreground">
                 Password
               </Label>
               <div className="relative">
@@ -104,14 +104,14 @@ export function LoginForm({ onForgotPassword }: LoginFormProps) {
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Masukkan password"
-                  className="wedding-input pr-10"
+                  className="h-10 pr-10"
                   {...register('password')}
                   disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                   disabled={isLoading}
                 >
                   {showPassword ? (
@@ -122,7 +122,7 @@ export function LoginForm({ onForgotPassword }: LoginFormProps) {
                 </button>
               </div>
               {errors.password && (
-                <p className="text-sm text-red-500 animate-slide-up">
+                <p className="text-sm text-destructive">
                   {errors.password.message}
                 </p>
               )}
@@ -139,7 +139,7 @@ export function LoginForm({ onForgotPassword }: LoginFormProps) {
                 />
                 <Label
                   htmlFor="rememberMe"
-                  className="text-sm text-gray-600 cursor-pointer"
+                  className="text-sm text-muted-foreground cursor-pointer"
                 >
                   Ingat saya
                 </Label>
@@ -149,7 +149,7 @@ export function LoginForm({ onForgotPassword }: LoginFormProps) {
                 <button
                   type="button"
                   onClick={onForgotPassword}
-                  className="text-sm text-rose-600 hover:text-rose-700 transition-colors"
+                  className="text-sm text-primary hover:text-primary/80 transition-colors"
                   disabled={isLoading}
                 >
                   Lupa password?
@@ -159,15 +159,15 @@ export function LoginForm({ onForgotPassword }: LoginFormProps) {
 
             {/* Error Message */}
             {error && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-md animate-slide-up">
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+                <p className="text-sm text-destructive">{error}</p>
               </div>
             )}
 
             {/* Submit Button */}
             <Button
               type="submit"
-              className="w-full wedding-button h-11"
+              className="w-full h-11"
               disabled={isLoading}
             >
               {isLoading ? (
