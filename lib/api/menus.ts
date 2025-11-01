@@ -1,4 +1,4 @@
-import { apiClient } from '@/lib/api';
+import { api } from '@/lib/api';
 import type {
   Menu,
   CreateMenuData,
@@ -30,27 +30,27 @@ export async function getMenus(params?: MenuListParams): Promise<MenusListRespon
   if (params?.sort_order) searchParams.append('sort_order', params.sort_order);
 
   const url = `/menus${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
-  return apiClient.get<MenusListResponse>(url);
+  return api.get<MenusListResponse>(url);
 }
 
 // Get single menu by ID
 export async function getMenu(id: number): Promise<MenuResponse> {
-  return apiClient.get<MenuResponse>(`/menus/${id}`);
+  return api.get<MenuResponse>(`/menus/${id}`);
 }
 
 // Create new menu
 export async function createMenu(data: CreateMenuData): Promise<MenuResponse> {
-  return apiClient.post<MenuResponse>('/menus', data);
+  return api.post<MenuResponse>('/menus', data);
 }
 
 // Update existing menu
 export async function updateMenu(id: number, data: UpdateMenuData): Promise<MenuResponse> {
-  return apiClient.put<MenuResponse>(`/menus/${id}`, data);
+  return api.put<MenuResponse>(`/menus/${id}`, data);
 }
 
 // Delete menu
 export async function deleteMenu(id: number): Promise<{ message: string }> {
-  return apiClient.delete<{ message: string }>(`/menus/${id}`);
+  return api.delete<{ message: string }>(`/menus/${id}`);
 }
 
 // Get menu tree structure
@@ -59,17 +59,17 @@ export async function getMenuTree(params?: { is_active?: boolean }): Promise<{ d
   if (params?.is_active !== undefined) searchParams.append('is_active', params.is_active.toString());
   
   const url = `/menus/tree${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
-  return apiClient.get<{ data: MenuTreeItem[]; message: string }>(url);
+  return api.get<{ data: MenuTreeItem[]; message: string }>(url);
 }
 
 // Get parent menus (menus without parent_id)
 export async function getParentMenus(): Promise<MenusListResponse> {
-  return apiClient.get<MenusListResponse>('/menus/parents');
+  return api.get<MenusListResponse>('/menus/parents');
 }
 
 // Get child menus by parent ID
 export async function getChildMenus(parentId: number): Promise<MenusListResponse> {
-  return apiClient.get<MenusListResponse>(`/menus/children/${parentId}`);
+  return api.get<MenusListResponse>(`/menus/children/${parentId}`);
 }
 
 // Search menus by name or display name
@@ -83,32 +83,32 @@ export async function searchMenus(query: string, filters?: MenuFilters): Promise
   if (filters?.is_active !== undefined) searchParams.append('is_active', filters.is_active.toString());
   if (filters?.permission) searchParams.append('permission', filters.permission);
 
-  return apiClient.get<MenusListResponse>(`/menus/search?${searchParams.toString()}`);
+  return api.get<MenusListResponse>(`/menus/search?${searchParams.toString()}`);
 }
 
 // Reorder menus
 export async function reorderMenus(data: MenuReorderData[]): Promise<{ message: string }> {
-  return apiClient.post<{ message: string }>('/menus/reorder', { menus: data });
+  return api.post<{ message: string }>('/menus/reorder', { menus: data });
 }
 
 // Bulk delete menus
 export async function bulkDeleteMenus(data: MenuBulkDeleteData): Promise<{ message: string }> {
-  return apiClient.post<{ message: string }>('/menus/bulk-delete', data);
+  return api.post<{ message: string }>('/menus/bulk-delete', data);
 }
 
 // Bulk update menus
 export async function bulkUpdateMenus(data: MenuBulkUpdateData): Promise<{ message: string }> {
-  return apiClient.post<{ message: string }>('/menus/bulk-update', data);
+  return api.post<{ message: string }>('/menus/bulk-update', data);
 }
 
 // Toggle menu status (active/inactive)
 export async function toggleMenuStatus(id: number): Promise<MenuResponse> {
-  return apiClient.post<MenuResponse>(`/menus/${id}/toggle-status`);
+  return api.post<MenuResponse>(`/menus/${id}/toggle-status`);
 }
 
 // Duplicate menu
 export async function duplicateMenu(id: number, data?: { name?: string; display_name?: string }): Promise<MenuResponse> {
-  return apiClient.post<MenuResponse>(`/menus/${id}/duplicate`, data);
+  return api.post<MenuResponse>(`/menus/${id}/duplicate`, data);
 }
 
 // Check if menu name exists
@@ -117,12 +117,12 @@ export async function checkMenuExists(name: string, excludeId?: number): Promise
   searchParams.append('name', name);
   if (excludeId) searchParams.append('exclude_id', excludeId.toString());
   
-  return apiClient.get<{ exists: boolean }>(`/menus/check-exists?${searchParams.toString()}`);
+  return api.get<{ exists: boolean }>(`/menus/check-exists?${searchParams.toString()}`);
 }
 
 // Get menu statistics
 export async function getMenuStats(): Promise<{ data: MenuStats; message: string }> {
-  return apiClient.get<{ data: MenuStats; message: string }>('/menus/stats');
+  return api.get<{ data: MenuStats; message: string }>('/menus/stats');
 }
 
 // Get menu by URL
@@ -130,12 +130,12 @@ export async function getMenuByUrl(url: string): Promise<MenuResponse> {
   const searchParams = new URLSearchParams();
   searchParams.append('url', url);
   
-  return apiClient.get<MenuResponse>(`/menus/by-url?${searchParams.toString()}`);
+  return api.get<MenuResponse>(`/menus/by-url?${searchParams.toString()}`);
 }
 
 // Get menus by permission
 export async function getMenusByPermission(permission: string): Promise<MenusListResponse> {
-  return apiClient.get<MenusListResponse>(`/menus/by-permission/${permission}`);
+  return api.get<MenusListResponse>(`/menus/by-permission/${permission}`);
 }
 
 // Export menus
@@ -177,10 +177,10 @@ export async function importMenus(file: File): Promise<{ message: string; import
 
 // Get menu breadcrumb
 export async function getMenuBreadcrumb(id: number): Promise<{ data: Menu[]; message: string }> {
-  return apiClient.get<{ data: Menu[]; message: string }>(`/menus/${id}/breadcrumb`);
+  return api.get<{ data: Menu[]; message: string }>(`/menus/${id}/breadcrumb`);
 }
 
 // Move menu to different parent
 export async function moveMenu(id: number, newParentId: number | null): Promise<MenuResponse> {
-  return apiClient.post<MenuResponse>(`/menus/${id}/move`, { parent_id: newParentId });
+  return api.post<MenuResponse>(`/menus/${id}/move`, { parent_id: newParentId });
 }

@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/components/providers/AuthProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ReactQueryProvider } from "@/components/providers/react-query-provider";
 import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ 
@@ -42,9 +43,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AuthProvider>
-            {children}
-          </AuthProvider>
+          <ReactQueryProvider>
+            <AuthProvider>
+              {children}
+            </AuthProvider>
+          </ReactQueryProvider>
           <Toaster />
         </ThemeProvider>
       </body>

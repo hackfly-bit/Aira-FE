@@ -81,7 +81,7 @@ export const permissionsApi = {
     try {
       const response = await api.get(`${PERMISSIONS_ENDPOINT}/check/${encodeURIComponent(name)}`);
       return response.data;
-    } catch (error) {
+    } catch {
       // If 404, permission doesn't exist
       return { exists: false };
     }

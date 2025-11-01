@@ -1,3 +1,4 @@
+ 
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -40,18 +41,14 @@ export function UsersPage() {
     }
 
     try {
-      const response = await usersApi.getUsers({
-        search: searchQuery || undefined,
-        status: statusFilter !== 'all' ? statusFilter : undefined,
-        role: roleFilter !== 'all' ? roleFilter : undefined,
-      });
+      const response = await usersApi.getUsers();
       setUsers(response.data);
     } catch (error: any) {
       console.error('Failed to load users:', error);
       toast({
-        title: 'Error',
-        description: error.response?.data?.message || 'Failed to load users',
         variant: 'destructive',
+        title: 'Error',
+        description: error.response?.data?.message || 'Failed to load users'
       });
     } finally {
       setIsLoading(false);
@@ -62,7 +59,7 @@ export function UsersPage() {
   // Initial load
   useEffect(() => {
     loadUsers();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Filter users based on search and filters
   const filteredUsers = users.filter((user) => {
@@ -73,7 +70,7 @@ export function UsersPage() {
     const matchesStatus = statusFilter === 'all' || user.status === statusFilter;
     
     const matchesRole = roleFilter === 'all' || 
-      user.roles?.some(role => role.name === roleFilter);
+      user.roles?.some(role => role === roleFilter);
 
     return matchesSearch && matchesStatus && matchesRole;
   });
@@ -81,7 +78,7 @@ export function UsersPage() {
   // Get unique roles for filter
   const availableRoles = Array.from(
     new Set(
-      users.flatMap(user => user.roles?.map(role => role.name) || [])
+      users.flatMap(user => user.roles || [])
     )
   );
 

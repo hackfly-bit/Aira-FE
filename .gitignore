@@ -42,4 +42,5 @@ next-env.d.ts
 
 # Trae
 /.trae
-/doc
+/docs
+/scripts

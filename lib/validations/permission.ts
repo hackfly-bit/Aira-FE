@@ -18,8 +18,7 @@ export const permissionSchema = z.object({
   guard_name: z
     .string()
     .min(1, 'Guard name is required')
-    .max(50, 'Guard name must be less than 50 characters')
-    .default('web'),
+    .max(50, 'Guard name must be less than 50 characters'),
 });
 
 // Create Permission schema
@@ -52,8 +51,7 @@ export const permissionFormSchema = z.object({
   guard_name: z
     .string()
     .min(1, 'Guard name is required')
-    .max(50, 'Guard name must be less than 50 characters')
-    .default('web'),
+    .max(50, 'Guard name must be less than 50 characters'),
 });
 
 // Permission assignment schema
@@ -77,12 +75,3 @@ export type UpdatePermissionData = z.infer<typeof updatePermissionSchema>;
 export type PermissionFormData = z.infer<typeof permissionFormSchema>;
 export type AssignPermissionData = z.infer<typeof assignPermissionSchema>;
 export type PermissionFilters = z.infer<typeof permissionFiltersSchema>;
-
-// Export schemas for use in forms
-export {
-  createPermissionSchema,
-  updatePermissionSchema,
-  permissionFormSchema,
-  assignPermissionSchema,
-  permissionFiltersSchema,
-};

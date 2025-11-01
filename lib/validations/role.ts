@@ -47,7 +47,8 @@ export const roleFormSchema = z.object({
   description: z
     .string()
     .max(500, 'Description must not exceed 500 characters')
-    .default(''),
+    .optional()
+    .or(z.literal('')),
 });
 
 // Permission assignment schema

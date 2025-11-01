@@ -1,3 +1,4 @@
+ 
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -235,7 +236,7 @@ export function RolesPage() {
             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
             <AlertDialogDescription>
               This action cannot be undone. This will permanently delete the role{' '}
-              <strong>"{selectedRole?.display_name || selectedRole?.name}"</strong>{' '}
+              <strong>&quot;{selectedRole?.display_name || selectedRole?.name}&quot;</strong>{' '}
               and remove it from all users who have this role.
             </AlertDialogDescription>
           </AlertDialogHeader>

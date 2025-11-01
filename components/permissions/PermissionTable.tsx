@@ -38,7 +38,8 @@ export function PermissionTable({
   onDelete,
   onManageRoles,
 }: PermissionTableProps) {
-  const [selectedPermissions, setSelectedPermissions] = useState<string[]>([]);
+  // TODO: Implement bulk selection functionality
+  // const [selectedPermissions, setSelectedPermissions] = useState<string[]>([]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('id-ID', {

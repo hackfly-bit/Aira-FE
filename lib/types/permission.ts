@@ -36,6 +36,7 @@ export interface PermissionResponse {
 export interface PermissionsListResponse {
   status: 'success' | 'error';
   data: Permission[];
+  total?: number;
   message: string;
   code: number;
 }
@@ -51,12 +52,7 @@ export interface PermissionTableColumn {
   actions?: React.ReactNode;
 }
 
-export interface PermissionFormData {
-  name: string;
-  display_name: string;
-  description: string;
-  guard_name: string;
-}
+// PermissionFormData is now defined in validations/permission.ts
 
 // Permission Assignment Types
 export interface AssignPermissionData {

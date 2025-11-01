@@ -11,28 +11,12 @@ import type {
   RolesListResponse,
 } from '../types/user';
 
-// Get authentication token from localStorage
-const getAuthToken = (): string | null => {
-  if (typeof window !== 'undefined') {
-    return localStorage.getItem('token');
-  }
-  return null;
-};
-
-// Create authorization headers
-const getAuthHeaders = () => {
-  const token = getAuthToken();
-  return token ? { Authorization: `Bearer ${token}` } : {};
-};
-
 // Users API
 export const usersApi = {
   // Get all users
   async getUsers(): Promise<UsersListResponse> {
     try {
-      const response = await api.get<User[]>('/users', {
-        headers: getAuthHeaders(),
-      });
+      const response = await api.get<User[]>('/users');
       
       return {
         status: 'success',
@@ -49,9 +33,7 @@ export const usersApi = {
   // Get single user
   async getUser(id: string): Promise<UserResponse> {
     try {
-      const response = await api.get<User>(`/users/${id}`, {
-        headers: getAuthHeaders(),
-      });
+      const response = await api.get<User>(`/users/${id}`);
       
       return {
         status: 'success',
@@ -68,9 +50,7 @@ export const usersApi = {
   // Create new user
   async createUser(userData: CreateUserData): Promise<UserResponse> {
     try {
-      const response = await api.post<User>('/users', userData, {
-        headers: getAuthHeaders(),
-      });
+      const response = await api.post<User>('/users', userData);
       
       return {
         status: 'success',
@@ -87,9 +67,7 @@ export const usersApi = {
   // Update user
   async updateUser(id: string, userData: UpdateUserData): Promise<UserResponse> {
     try {
-      const response = await api.put<User>(`/users/${id}`, userData, {
-        headers: getAuthHeaders(),
-      });
+      const response = await api.put<User>(`/users/${id}`, userData);
       
       return {
         status: 'success',
@@ -106,9 +84,7 @@ export const usersApi = {
   // Delete user
   async deleteUser(id: string): Promise<UserResponse> {
     try {
-      const response = await api.delete<User>(`/users/${id}`, {
-        headers: getAuthHeaders(),
-      });
+      const response = await api.delete<User>(`/users/${id}`);
       
       return {
         status: 'success',
@@ -125,9 +101,7 @@ export const usersApi = {
   // Assign role to user
   async assignRole(userId: string, roleData: AssignRoleData): Promise<UserResponse> {
     try {
-      const response = await api.post<User>(`/users/${userId}/roles`, roleData, {
-        headers: getAuthHeaders(),
-      });
+      const response = await api.post<User>(`/users/${userId}/roles`, roleData);
       
       return {
         status: 'success',
@@ -144,9 +118,7 @@ export const usersApi = {
   // Remove role from user
   async removeRole(userId: string, roleId: string): Promise<UserResponse> {
     try {
-      const response = await api.delete<User>(`/users/${userId}/roles/${roleId}`, {
-        headers: getAuthHeaders(),
-      });
+      const response = await api.delete<User>(`/users/${userId}/roles/${roleId}`);
       
       return {
         status: 'success',
@@ -166,9 +138,7 @@ export const rolesApi = {
   // Get all roles
   async getRoles(): Promise<RolesListResponse> {
     try {
-      const response = await api.get<Role[]>('/roles', {
-        headers: getAuthHeaders(),
-      });
+      const response = await api.get<Role[]>('/roles');
       
       return {
         status: 'success',

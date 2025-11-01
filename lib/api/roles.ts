@@ -6,10 +6,12 @@ import type {
   UpdateRoleData,
   RoleResponse,
   RolesListResponse,
+  RoleAssignmentResponse,
+  RoleListParams,
   PermissionsListResponse,
 } from '@/lib/types/role';
 
-// Base API endpoints
+// API endpoints
 const ROLES_ENDPOINT = '/roles';
 const PERMISSIONS_ENDPOINT = '/permissions';
 

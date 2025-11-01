@@ -64,8 +64,4 @@ export interface RoleTableColumn {
 }
 
 // Role Form Schema
-export interface RoleFormData {
-  name: string;
-  display_name: string;
-  description: string;
-}
+// RoleFormData is now defined in validations/role.ts
