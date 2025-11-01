@@ -12,7 +12,7 @@ import type {
   MenuBulkUpdateData,
   MenuStats,
   MenuTreeItem
-} from '@/lib/types/menu';
+} from '../types/menu';
 
 // Get all menus with optional filters and pagination
 export async function getMenus(params?: MenuListParams): Promise<MenusListResponse> {

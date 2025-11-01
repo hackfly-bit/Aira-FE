@@ -16,8 +16,8 @@ import {
 } from '@/components/ui/select';
 import { useToast } from '@/lib/hooks/use-toast';
 
-import { User } from '@/lib/types/user';
-import { usersApi } from '@/lib/api/users';
+import { User } from '@/features/users/types/user';
+import { usersApi } from '@/features/users/services/users';
 import UserTable from './UserTable';
 import { UserForm } from './UserForm';
 

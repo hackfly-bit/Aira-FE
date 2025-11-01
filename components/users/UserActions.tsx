@@ -47,11 +47,12 @@ import {
 } from '@/components/ui/select';
 import { useToast } from '@/lib/hooks/use-toast';
 
-import { User, Role, AssignRoleData } from '@/lib/types/user';
-import { usersApi, rolesApi } from '@/lib/api/users';
+import { User, Role, AssignRoleData } from '@/features/users/types/user';
+import { usersApi } from '@/features/users/services/users';
+import { rolesApi } from '@/features/roles/services/roles';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { assignRoleSchema } from '@/lib/validations/user';
+import { assignRoleSchema } from '@/features/users/validations/user';
 import { useEffect } from 'react';
 
 interface UserActionsProps {

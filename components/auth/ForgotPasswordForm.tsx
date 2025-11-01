@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { forgotPasswordSchema, type ForgotPasswordFormData } from '@/lib/validations/auth';
+import { forgotPasswordSchema, type ForgotPasswordFormData } from '@/features/auth/validations/auth';
 import { useAuth } from '@/components/providers/AuthProvider';
 
 interface ForgotPasswordFormProps {

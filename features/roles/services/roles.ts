@@ -1,4 +1,4 @@
-import { api } from '../api';
+import { api } from '@/lib/api';
 import type {
   Role,
   Permission,
@@ -6,10 +6,8 @@ import type {
   UpdateRoleData,
   RoleResponse,
   RolesListResponse,
-  RoleAssignmentResponse,
-  RoleListParams,
   PermissionsListResponse,
-} from '@/lib/types/role';
+} from '../types/role';
 
 // API endpoints
 const ROLES_ENDPOINT = '/roles';
@@ -90,7 +88,6 @@ export const rolesApi = {
   },
 };
 
-// Export individual functions for easier imports
 export const {
   getRoles,
   getRole,

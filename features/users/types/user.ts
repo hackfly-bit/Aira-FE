@@ -48,6 +48,7 @@ export interface UpdateUserData {
   status?: 'active' | 'inactive';
 }
 
+// Role Assignment
 export interface AssignRoleData {
   role: string;
 }
@@ -74,7 +75,7 @@ export interface RolesListResponse {
   code: number;
 }
 
-// User Table Column Type
+// Table Types
 export interface UserTableColumn {
   id: string;
   name: string;
@@ -85,7 +86,7 @@ export interface UserTableColumn {
   actions?: React.ReactNode;
 }
 
-// User Form Schema
+// Form Types
 export interface UserFormData {
   name: string;
   email: string;

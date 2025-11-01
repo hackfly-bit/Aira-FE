@@ -32,20 +32,11 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { MenuTable } from './MenuTable';
 import { MenuForm } from './MenuForm';
-import {
-  getMenus,
-  getParentMenus,
-  createMenu,
-  updateMenu,
-  deleteMenu,
-  toggleMenuStatus,
-  duplicateMenu,
-  getMenuStats,
-  searchMenus,
-} from '@/lib/api/menus';
-import { permissionsApi } from '@/lib/api/permissions';
-import type { Menu, MenuFormData, MenuFilters, MenuStats, CreateMenuData, UpdateMenuData } from '@/lib/types/menu';
-import type { Permission } from '@/lib/types/permission';
+import { menusApi } from '@/features/menus/services/menus';
+import { permissionsApi } from '@/features/permissions/services/permissions';
+import type { Menu, MenuListParams } from '@/features/menus/types/menu';
+import type { MenuFormData } from '@/features/menus/validations/menu';
+import type { Permission } from '@/features/permissions/types/permission';
 
 export function MenusPage() {
   const [menus, setMenus] = useState<Menu[]>([]);

@@ -18,8 +18,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
-import { roleFormSchema, type RoleFormData } from '@/lib/validations/role';
-import type { Role } from '@/lib/types/role';
+import { roleFormSchema, type RoleFormData } from '@/features/roles/validations/role';
+import type { Role } from '@/features/roles/types/role';
+import type { Permission } from '@/features/permissions/types/permission';
 
 interface RoleFormProps {
   role?: Role | null;

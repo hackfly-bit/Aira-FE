@@ -1,4 +1,4 @@
-import { api } from '../api';
+import { api } from '@/lib/api';
 import type {
   Permission,
   CreatePermissionData,
@@ -62,7 +62,7 @@ export const permissionsApi = {
     return response.data;
   },
 
-  // Search permissions by name or display name
+  // Search permissions
   searchPermissions: async (query: string): Promise<PermissionsListResponse> => {
     const response = await api.get(`${PERMISSIONS_ENDPOINT}?search=${encodeURIComponent(query)}`);
     return response.data;
@@ -70,19 +70,18 @@ export const permissionsApi = {
 
   // Bulk delete permissions
   bulkDeletePermissions: async (ids: string[]): Promise<PermissionAssignmentResponse> => {
-    const response = await api.delete(PERMISSIONS_ENDPOINT, {
-      data: { ids }
+    const response = await api.post(`${PERMISSIONS_ENDPOINT}/bulk-delete`, {
+      permission_ids: ids,
     });
     return response.data;
   },
 
-  // Check if permission exists by name
+  // Check if permission exists
   checkPermissionExists: async (name: string): Promise<{ exists: boolean }> => {
     try {
-      const response = await api.get(`${PERMISSIONS_ENDPOINT}/check/${encodeURIComponent(name)}`);
+      const response = await api.get(`${PERMISSIONS_ENDPOINT}/check-exists?name=${encodeURIComponent(name)}`);
       return response.data;
-    } catch {
-      // If 404, permission doesn't exist
+    } catch (error) {
       return { exists: false };
     }
   },
@@ -98,7 +97,6 @@ export const permissionsApi = {
   },
 };
 
-// Export default object for easier imports
 export default {
   permissions: permissionsApi,
 };

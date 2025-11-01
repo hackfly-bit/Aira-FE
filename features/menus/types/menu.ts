@@ -62,7 +62,7 @@ export interface MenusListResponse {
   };
 }
 
-// Table Column Type
+// Table and Form Types
 export interface MenuTableColumn {
   id: string;
   label: string;
@@ -70,7 +70,7 @@ export interface MenuTableColumn {
   width?: string;
 }
 
-// Form Data Type
+// Form Data
 export interface MenuFormData {
   name: string;
   display_name: string;
@@ -84,7 +84,7 @@ export interface MenuFormData {
   permission: string;
 }
 
-// Menu Tree Structure
+// Tree Structure
 export interface MenuTreeItem {
   id: number;
   name: string;
@@ -95,7 +95,7 @@ export interface MenuTreeItem {
   level: number;
 }
 
-// Menu Filters
+// Filter and Pagination
 export interface MenuFilters {
   search?: string;
   parent_id?: number | null;
@@ -103,7 +103,6 @@ export interface MenuFilters {
   permission?: string;
 }
 
-// Menu List Parameters
 export interface MenuListParams {
   page?: number;
   per_page?: number;
@@ -115,14 +114,13 @@ export interface MenuListParams {
   sort_order?: 'asc' | 'desc';
 }
 
-// Menu Reorder Data
+// Bulk Operations
 export interface MenuReorderData {
   id: number;
   sort_order: number;
   parent_id?: number | null;
 }
 
-// Menu Bulk Operations
 export interface MenuBulkDeleteData {
   ids: number[];
 }
@@ -132,7 +130,7 @@ export interface MenuBulkUpdateData {
   data: Partial<UpdateMenuData>;
 }
 
-// Menu Statistics
+// Statistics
 export interface MenuStats {
   total: number;
   active: number;
@@ -142,14 +140,14 @@ export interface MenuStats {
   max_depth: number;
 }
 
-// Menu Icon Options
+// Icon Options
 export interface MenuIconOption {
   value: string;
   label: string;
   icon: string;
 }
 
-// Menu Target Options
+// Constants
 export const MENU_TARGETS = [
   { value: '_self', label: 'Same Window' },
   { value: '_blank', label: 'New Window' },
@@ -157,13 +155,11 @@ export const MENU_TARGETS = [
   { value: '_top', label: 'Top Frame' }
 ] as const;
 
-// Menu Status Options
 export const MENU_STATUS_OPTIONS = [
   { value: true, label: 'Active', color: 'green' },
   { value: false, label: 'Inactive', color: 'red' }
 ] as const;
 
-// Common Lucide React icons for menus
 export const MENU_ICON_OPTIONS = [
   { value: 'Home', label: 'Home' },
   { value: 'User', label: 'User' },

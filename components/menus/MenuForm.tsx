@@ -38,9 +38,10 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { menuFormSchema, type MenuFormData } from '@/lib/validations/menu';
-import { MENU_TARGETS, MENU_ICON_OPTIONS } from '@/lib/types/menu';
-import type { Menu } from '@/lib/types/menu';
+import { menuFormSchema, type MenuFormData } from '@/features/menus/validations/menu';
+import { MENU_TARGETS, MENU_ICON_OPTIONS } from '@/features/menus/types/menu';
+import type { Menu } from '@/features/menus/types/menu';
+import type { Permission } from '@/features/permissions/types/permission';
 
 interface MenuFormProps {
   menu?: Menu;

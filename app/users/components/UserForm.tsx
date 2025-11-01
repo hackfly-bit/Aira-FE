@@ -32,14 +32,15 @@ import {
 } from '@/components/ui/select';
 import { useToast } from '@/lib/hooks/use-toast';
 
-import { User, Role } from '@/lib/types/user';
-import { usersApi, rolesApi } from '@/lib/api/users';
+import { User, Role } from '@/features/users/types/user';
+import { usersApi } from '@/features/users/services/users';
+import { rolesApi } from '@/features/roles/services/roles';
 import {
   createUserSchema,
   updateUserSchema,
   CreateUserData,
   UpdateUserData,
-} from '@/lib/validations/user';
+} from '@/features/users/validations/user';
 
 interface UserFormProps {
   open: boolean;

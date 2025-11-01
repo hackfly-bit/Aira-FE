@@ -1,5 +1,5 @@
 // User Management API Client
-import { api } from '../api';
+import { api } from '@/lib/api';
 import type {
   User,
   Role,
@@ -153,7 +153,6 @@ export const rolesApi = {
   },
 };
 
-// Export default
 export default {
   users: usersApi,
   roles: rolesApi,

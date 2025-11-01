@@ -54,8 +54,7 @@ export const updateUserSchema = z.object({
     .string()
     .optional(),
 }).refine((data) => {
-  // Only validate password confirmation if password is provided
-  if (data.password && data.password.length > 0) {
+  if (data.password && data.password_confirmation) {
     return data.password === data.password_confirmation;
   }
   return true;
@@ -64,10 +63,10 @@ export const updateUserSchema = z.object({
   path: ['password_confirmation'],
 });
 
-// User form schema for general use (password optional)
+// User form schema (alias for update schema)
 export const userFormSchema = updateUserSchema;
 
-// Role assignment schema
+// Assign role schema
 export const assignRoleSchema = z.object({
   role: z
     .string()

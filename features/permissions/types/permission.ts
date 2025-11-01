@@ -52,9 +52,7 @@ export interface PermissionTableColumn {
   actions?: React.ReactNode;
 }
 
-// PermissionFormData is now defined in validations/permission.ts
-
-// Permission Assignment Types
+// Assignment Types
 export interface AssignPermissionData {
   permission_id: string;
 }
@@ -65,7 +63,7 @@ export interface PermissionAssignmentResponse {
   code: number;
 }
 
-// Permission Search and Filter Types
+// Filter and Pagination Types
 export interface PermissionFilters {
   search?: string;
   guard_name?: string;
@@ -77,3 +75,6 @@ export interface PermissionListParams extends PermissionFilters {
   page?: number;
   per_page?: number;
 }
+
+// Form Data Types
+export type PermissionFormData = CreatePermissionData;

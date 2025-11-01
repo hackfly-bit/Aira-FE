@@ -5,16 +5,18 @@ import {
   Card, 
   CardContent, 
   CardHeader, 
-  CardTitle,
-  Button,
+  CardTitle 
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import {
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
-  LoadingSpinner 
-} from '@/shared/components';
+  TableRow
+} from '@/components/ui/table';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { useUsers } from '@/features/users/hooks';
 import type { User } from '@/features/users/types';
 

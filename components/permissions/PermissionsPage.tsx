@@ -33,9 +33,9 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { PermissionTable } from './PermissionTable';
 import { PermissionForm } from './PermissionForm';
-import { permissionsApi } from '@/lib/api/permissions';
-import type { Permission, PermissionListParams } from '@/lib/types/permission';
-import type { PermissionFormData } from '@/lib/validations/permission';
+import { permissionsApi } from '@/features/permissions/services/permissions';
+import type { Permission, PermissionListParams } from '@/features/permissions/types/permission';
+import type { PermissionFormData } from '@/features/permissions/validations/permission';
 
 export function PermissionsPage() {
   const [permissions, setPermissions] = useState<Permission[]>([]);

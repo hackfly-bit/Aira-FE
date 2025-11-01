@@ -20,7 +20,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal, Edit, Trash2, UserCheck, UserX } from 'lucide-react';
-import type { User } from '@/lib/types/user';
+import type { User } from '@/features/users/types/user';
 
 interface UserTableProps {
   users: User[];

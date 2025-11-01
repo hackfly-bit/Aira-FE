@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
-import { DashboardStats } from '@/features/dashboard'
-import { PageHeader, LoadingSpinner, Card } from '@/shared/components'
+import { DashboardStats } from '@/features/dashboard/components/DashboardStats'
+import { Card } from '@/components/ui/card'
 
 export default function DashboardPage() {
   return (

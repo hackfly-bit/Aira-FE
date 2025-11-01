@@ -26,7 +26,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 
-import type { Role } from '@/lib/types/role';
+import type { Role } from '@/features/roles/types/role';
 
 interface RoleTableProps {
   roles: Role[];

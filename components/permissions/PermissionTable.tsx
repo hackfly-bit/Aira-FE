@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
-import type { Permission } from '@/lib/types/permission';
+import type { Permission } from '@/features/permissions/types/permission';
 
 interface PermissionTableProps {
   permissions: Permission[];

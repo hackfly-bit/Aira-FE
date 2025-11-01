@@ -21,8 +21,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { permissionFormSchema, type PermissionFormData } from '@/lib/validations/permission';
-import type { Permission } from '@/lib/types/permission';
+import { permissionFormSchema, type PermissionFormData } from '@/features/permissions/validations/permission';
+import type { Permission } from '@/features/permissions/types/permission';
 
 interface PermissionFormProps {
   permission?: Permission;

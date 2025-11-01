@@ -27,9 +27,9 @@ import {
 
 import { RoleTable } from './RoleTable';
 import { RoleForm } from './RoleForm';
-import { rolesApi } from '@/lib/api/roles';
-import type { Role } from '@/lib/types/role';
-import type { RoleFormData } from '@/lib/validations/role';
+import { rolesApi } from '@/features/roles/services/roles';
+import type { Role } from '@/features/roles/types/role';
+import type { RoleFormData } from '@/features/roles/validations/role';
 
 export function RolesPage() {
   const [roles, setRoles] = useState<Role[]>([]);

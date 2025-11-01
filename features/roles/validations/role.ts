@@ -51,7 +51,7 @@ export const roleFormSchema = z.object({
     .or(z.literal('')),
 });
 
-// Permission assignment schema
+// Assign permission schema
 export const assignPermissionSchema = z.object({
   permission: z
     .string()

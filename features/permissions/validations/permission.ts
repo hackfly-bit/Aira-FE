@@ -54,12 +54,12 @@ export const permissionFormSchema = z.object({
     .max(50, 'Guard name must be less than 50 characters'),
 });
 
-// Permission assignment schema
+// Assign Permission schema
 export const assignPermissionSchema = z.object({
   permission_id: z.string().min(1, 'Permission ID is required'),
 });
 
-// Permission search/filter schema
+// Permission Filters schema
 export const permissionFiltersSchema = z.object({
   search: z.string().optional(),
   guard_name: z.string().optional(),
@@ -69,7 +69,7 @@ export const permissionFiltersSchema = z.object({
   per_page: z.number().min(1).max(100).optional(),
 });
 
-// Type exports for use in components
+// Type exports
 export type CreatePermissionData = z.infer<typeof createPermissionSchema>;
 export type UpdatePermissionData = z.infer<typeof updatePermissionSchema>;
 export type PermissionFormData = z.infer<typeof permissionFormSchema>;

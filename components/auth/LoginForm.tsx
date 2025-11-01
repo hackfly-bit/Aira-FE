@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/components/providers/AuthProvider';
-import { loginSchema, type LoginFormData } from '@/lib/validations/auth';
+import { loginSchema, type LoginFormData } from '@/features/auth/validations/auth';
 
 interface LoginFormProps {
   onForgotPassword?: () => void;

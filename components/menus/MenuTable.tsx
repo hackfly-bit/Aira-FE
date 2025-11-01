@@ -22,7 +22,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Skeleton } from '@/components/ui/skeleton';
-import type { Menu } from '@/lib/types/menu';
+import type { Menu } from '@/features/menus/types/menu';
 
 interface MenuTableProps {
   menus: Menu[];

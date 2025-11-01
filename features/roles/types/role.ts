@@ -53,7 +53,7 @@ export interface PermissionsListResponse {
   code: number;
 }
 
-// Role Table Column Type
+// Table Column Types
 export interface RoleTableColumn {
   id: string;
   name: string;
@@ -63,5 +63,5 @@ export interface RoleTableColumn {
   actions?: React.ReactNode;
 }
 
-// Role Form Schema
-// RoleFormData is now defined in validations/role.ts
+// Form Data Types
+export type RoleFormData = CreateRoleData;

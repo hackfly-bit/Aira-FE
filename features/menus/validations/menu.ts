@@ -133,7 +133,7 @@ export const menuFormSchema = z.object({
     .or(z.literal('')),
 });
 
-// Menu Filters Schema
+// Filter and Pagination Schemas
 export const menuFiltersSchema = z.object({
   search: z.string().optional(),
   parent_id: z.number().int().positive().nullable().optional(),
@@ -141,7 +141,6 @@ export const menuFiltersSchema = z.object({
   permission: z.string().optional(),
 });
 
-// Menu List Parameters Schema
 export const menuListParamsSchema = z.object({
   page: z.number().int().positive().default(1),
   per_page: z.number().int().positive().max(100).default(10),
@@ -153,19 +152,17 @@ export const menuListParamsSchema = z.object({
   sort_order: z.enum(['asc', 'desc']).default('asc'),
 });
 
-// Menu Reorder Schema
+// Bulk Operations Schemas
 export const menuReorderSchema = z.object({
   id: z.number().int().positive(),
   sort_order: z.number().int().min(0),
   parent_id: z.number().int().positive().nullable().optional(),
 });
 
-// Menu Bulk Delete Schema
 export const menuBulkDeleteSchema = z.object({
   ids: z.array(z.number().int().positive()).min(1, 'At least one menu must be selected'),
 });
 
-// Menu Bulk Update Schema
 export const menuBulkUpdateSchema = z.object({
   ids: z.array(z.number().int().positive()).min(1, 'At least one menu must be selected'),
   data: updateMenuSchema,
