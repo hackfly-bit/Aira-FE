@@ -2,7 +2,7 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api';
 
 // API Response Types
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   data?: T;
   message?: string;
   error?: string;
@@ -12,9 +12,9 @@ export interface ApiResponse<T = any> {
 // API Error Class
 export class ApiError extends Error {
   status: number;
-  response?: any;
+  response?: Record<string, unknown>;
 
-  constructor(message: string, status: number, response?: any) {
+  constructor(message: string, status: number, response?: Record<string, unknown>) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
@@ -110,7 +110,7 @@ class ApiClient {
 
   async post<T>(
     endpoint: string,
-    data?: any,
+    data?: Record<string, unknown>,
     config?: RequestConfig
   ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
@@ -122,7 +122,7 @@ class ApiClient {
 
   async put<T>(
     endpoint: string,
-    data?: any,
+    data?: Record<string, unknown>,
     config?: RequestConfig
   ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {
@@ -134,7 +134,7 @@ class ApiClient {
 
   async patch<T>(
     endpoint: string,
-    data?: any,
+    data?: Record<string, unknown>,
     config?: RequestConfig
   ): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, {

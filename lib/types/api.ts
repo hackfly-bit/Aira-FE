@@ -33,7 +33,7 @@ export interface ListResponse<T> extends BaseApiResponse {
 // Error Response
 export interface ErrorResponse extends BaseApiResponse {
   error: string;
-  details?: any;
+  details?: Record<string, unknown>;
 }
 
 // Success Response
@@ -48,7 +48,7 @@ export interface QueryParams {
   search?: string;
   sort?: string;
   order?: 'asc' | 'desc';
-  [key: string]: any;
+  [key: string]: string | number | undefined;
 }
 
 // File Upload Response

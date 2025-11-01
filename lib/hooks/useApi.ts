@@ -13,16 +13,16 @@ interface UseApiState<T> {
 }
 
 // Hook options interface
-interface UseApiOptions {
+interface UseApiOptions<T = unknown> {
   immediate?: boolean;
-  onSuccess?: (data: any) => void;
+  onSuccess?: (data: T) => void;
   onError?: (error: string) => void;
 }
 
 // Main useApi hook
-export function useApi<T = any>(
+export function useApi<T = unknown>(
   endpoint: string,
-  options: UseApiOptions = {}
+  options: UseApiOptions<T> = {}
 ) {
   const { immediate = false, onSuccess, onError } = options;
   
@@ -71,7 +71,8 @@ export function useApi<T = any>(
 
   useEffect(() => {
     if (immediate) {
-      execute();
+      // Use a microtask to avoid synchronous setState calls in effects
+      Promise.resolve().then(() => execute());
     }
   }, [execute, immediate]);
 
@@ -83,9 +84,9 @@ export function useApi<T = any>(
 }
 
 // Hook for POST requests
-export function useApiPost<T = any, D = any>(
+export function useApiPost<T = unknown, D = unknown>(
   endpoint: string,
-  options: UseApiOptions = {}
+  options: UseApiOptions<T> = {}
 ) {
   const { onSuccess, onError } = options;
   
@@ -139,9 +140,9 @@ export function useApiPost<T = any, D = any>(
 }
 
 // Hook for PUT requests
-export function useApiPut<T = any, D = any>(
+export function useApiPut<T = unknown, D = unknown>(
   endpoint: string,
-  options: UseApiOptions = {}
+  options: UseApiOptions<T> = {}
 ) {
   const { onSuccess, onError } = options;
   
@@ -195,9 +196,9 @@ export function useApiPut<T = any, D = any>(
 }
 
 // Hook for DELETE requests
-export function useApiDelete<T = any>(
+export function useApiDelete<T = unknown>(
   endpoint: string,
-  options: UseApiOptions = {}
+  options: UseApiOptions<T> = {}
 ) {
   const { onSuccess, onError } = options;
   
@@ -251,9 +252,9 @@ export function useApiDelete<T = any>(
 }
 
 // Hook for file uploads
-export function useApiUpload<T = any>(
+export function useApiUpload<T = unknown>(
   endpoint: string,
-  options: UseApiOptions = {}
+  options: UseApiOptions<T> = {}
 ) {
   const { onSuccess, onError } = options;
   
